@@ -1,0 +1,10 @@
+<h1>Create a new Post!</h1>
+<%= form_for @post, url: {action: "create"}, html: {class: "new"} do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :body %>
+    <%= f.text_area :body, size: "60x12" %>
+    <%= f.submit "Create" %>
+  </div>
+<% end %>
