@@ -1,8 +1,11 @@
 <h1>Here are the Blogs.</h1>
 
 <% @posts.each do |post| %>
-  <div>
+  <div class="post-index">
     <h3><%= post.title %></h3>
     <p><%= post.body %></p>
-  </div>
+
+    <%= render partial: "shared/comments", locals: {post: post} %>
+
+   </div>
 <% end %>

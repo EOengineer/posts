@@ -1,17 +1,20 @@
 class CommentsController < ApplicationController
   def index
-    @comments = Comment.all
+    @post = Post.find(params[:post_id])
+    @comments = @post.comments
   end
 
   def new
+    @post = Post.find(params[:post_id])
     @comment = Comment.new
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.build(comment_params)
 
     if @comment.save
-      redirect_to @comment
+      redirect_to post_comment_path(@post)
       flash[:now] = 'Successfully Created Comment.'
     else
       render 'new'
